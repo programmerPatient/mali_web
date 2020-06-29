@@ -30,6 +30,10 @@ if($_SESSION['username']){
     	color:red;
     	font-size: 15px;
     }
+    .success{
+    	color:green;
+    	font-size: 15px;
+    }
 
 
 </style>
@@ -70,6 +74,12 @@ if($_SESSION['username']){
 	var error = "<?php echo $_GET['error']?$_GET['error']:null; ?>";
 	if(error){
 		$('.title').append('<p class="error">错误信息：'+error+'</p>');
+		// alert(error);
+	}
+
+	var success = "<?php echo $_GET['success']?$_GET['success']:null; ?>";
+	if(success){
+		$('.title').append('<p class="success">'+success+'</p>');
 		// alert(error);
 	}
 

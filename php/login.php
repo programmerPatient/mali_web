@@ -29,9 +29,17 @@ if(!$_POST['account']){
 	$password = $_POST['password'];
 	$result = $mysql->fetch_one("SELECT * FROM user WHERE account="."'".$account."'"." AND password="."'".md5($password)."'");
 	if($result){
-		$_SESSION['username'] = $result['name'];
-		$_SESSION['userphone'] = $result['phone'];
-		header('location:../index.php');
+		if($result['is_cancel']){
+			$error .= '账号已经注销!';
+		}else{
+			$_SESSION['username'] = $result['name'];
+			$_SESSION['userphone'] = $result['phone'];
+			$_SESSION['userid'] = $result['id'];
+			$_SESSION['useraccount'] = $result['account'];
+			$_SESSION['is_cancel'] = $result['is_cancel'];
+			header('location:../index.php');
+		}
+		
 	}else{
 		$error .= '账号或密码错误!';
 	}
