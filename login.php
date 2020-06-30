@@ -11,72 +11,71 @@ if($_SESSION['username']){
 	<meta charset="utf-8">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title>登录页面</title>
+	<style type="text/css">
+
+	    body{
+
+	        font-size:12px;
+	        font-family:"Arial, Helvetica, sans-serif";
+	        background-image:url('./image/login.jpg');
+	        background-repeat:repeat-x;
+	    }
+	    a:hover{
+	    	color: green;
+	    }
+
+	    .error{
+	    	color:red;
+	    	font-size: 15px;
+	    }
+	    .success{
+	    	color:green;
+	    	font-size: 15px;
+	    }
+
+	    .login{
+	    	text-align: center; /*让div内部文字居中*/
+		    background-color: #fff;
+		    border-radius: 20px;
+		    width: 300px;
+		    height: 350px;
+		    margin: auto;
+		    position: absolute;
+		    top: 0;
+		    left: 0;
+		    right: 0;
+		    bottom: 0;
+		    font-size: 25px;
+		    background-color:rgba(200,200,200,0.7);
+		    color:#000000;
+	    }
+
+	    .input{
+	    	background-color:transparent;
+	    	height: 29px; 
+	    	outline-style: none ;
+	    	border: 1px solid #fff; 
+	    	border-radius: 3px;
+	    }
+
+	    #captcha{
+	    	float:right;
+	    	width:60px;
+	    	height:40px;
+	    	margin-right:10px;
+	    }
+
+	    #save-btn{
+	    	margin-top: 10px;
+	    	width:80px;
+	    	height: 30px;
+	    	float:left;
+	    	margin-left: 35px;
+	    	margin-right: 45px;
+	    }
+
+	</style>
 </head>
-
-<style type="text/css">
-
-    body{
-
-        font-size:12px;
-        font-family:"Arial, Helvetica, sans-serif";
-        background-image:url('./image/login.jpg');
-        background-repeat:repeat-x;
-    }
-    a:hover{
-    	color: green;
-    }
-
-    .error{
-    	color:red;
-    	font-size: 15px;
-    }
-    .success{
-    	color:green;
-    	font-size: 15px;
-    }
-
-    .login{
-    	text-align: center; /*让div内部文字居中*/
-	    background-color: #fff;
-	    border-radius: 20px;
-	    width: 300px;
-	    height: 350px;
-	    margin: auto;
-	    position: absolute;
-	    top: 0;
-	    left: 0;
-	    right: 0;
-	    bottom: 0;
-	    font-size: 25px;
-	    background-color:rgba(200,200,200,0.7);
-	    color:#000000;
-    }
-
-    .input{
-    	background-color:transparent;
-    	height: 29px; 
-    	outline-style: none ;
-    	border: 1px solid #fff; 
-    	border-radius: 3px;
-    }
-
-    #captcha{
-    	float:right;
-    	width:60px;
-    	height:40px;
-    	margin-right:10px;
-    }
-
-    #save-btn{
-    	margin-top: 10px;
-    	width:80px;
-    	height: 30px;
-    	float:left;
-    	margin-left: 35px;
-    	margin-right: 45px;
-    }
-
-</style>
 <body>
 	<div class="login">
 		<div class="title" >

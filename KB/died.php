@@ -11,171 +11,171 @@ if(!$_SESSION['username']){
 	<meta charset="utf-8">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title>科比去世</title>
-</head>
-<style type="text/css">
-	body{			
-	        font-size:12px;
-	        font-family:"Arial, Helvetica, sans-serif";
-	        background-image:url('../image/died.jpg');
-	        background-repeat:repeat-x;
-	        background-attachment:fixed; 
-    		overflow-x: hidden;
-			overflow-y: scroll;
-	        /*background-repeat: no-repeat;   */
-    		/*background-size: 100% 100%;     */
-    	}
-    body::-webkit-scrollbar {
-		    display: none;
-		}
-		
-    #Logo{
-    		background-color: rgba(156, 156, 156,0.8);
-			color:white;/* #fff */
-			width:100%;
-			z-index: 100;
-			position: fixed;
-			height:45px;
-			left:0;
-			top:0;
-			/*margin:上下 左右*/
-			margin:0px auto;
-			border-radius:10px;
-			font-family:"apple-system","BlinkMacSystemFont","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
-			/*background-color: rgba(84, 89, 93,0.5);*/
-			/*box-shadow:1px 1px 33px #fff;/*设计阴影的*/*/
-		}
-
-		
-		#Logo ul{
-			padding: 0;
-			margin:0;
-		}
-
-		#Logo ul li
-		{
-			width:150px;
-			 height:45px;
-			list-style:none;/*去掉圆点*/
-			float:left;/*水平显示*/
-			color:white;/* #fff */
-			font-size:18px;
-			font-family:"微软雅黑";
-			text-align:center;
-			line-height:45px;/* 行高跟 高度一致时，竖直居中*/
-			border-right:1px solid #000;/*右边框*/
-		}
-		
-		#Logo ul li a
-		{
-			color:white;/* #fff */
-			font-size:18px;
-			font-family:"微软雅黑";
-			text-decoration:none;
-		}
-		
-		#Logo ul li:hover
-		{
-			background:rgba(10,5,5,0.45);
-		}
-		
-		#Logo ul li.first:hover
-		{
-			border-radius:10px 0px 0px 10px;/*左上 左下 圆弧显示 */
-		}
-		
-		#Logo ul li.last:hover
-		{
-			border-radius:0px 10px 10px 0px;/*右上 右下 圆弧显示 */
-		}
- 
-		#Logo ul li ul li 
-		{
-			border:none;
-			border-top:1px solid #989898;
-			background:rgba(10,5,5,0.45);/*颜色透明度 */
-			border-radius:10px;
+	<style type="text/css">
+		body{			
+		        font-size:12px;
+		        font-family:"Arial, Helvetica, sans-serif";
+		        background-image:url('../image/died.jpg');
+		        background-repeat:repeat-x;
+		        background-attachment:fixed; 
+	    		overflow-x: hidden;
+				overflow-y: scroll;
+		        /*background-repeat: no-repeat;   */
+	    		/*background-size: 100% 100%;     */
+	    	}
+	    body::-webkit-scrollbar {
+			    display: none;
+			}
 			
-		}
- 
-		#Logo ul li ul
-		{
-			display:none;/*不显示*/
-		}
-		#Logo ul li ul li:hover
-		{
-			background:rgba(10,5,5,0.8);/*颜色透明度 */
-			border-radius:10px;
-		}
-		
-		#Logo ul li:hover ul
-		{
-			display:block;
-			-webkit-animation:roll 1s ease;/*roll 旋转名称，1s旋转效果 */
-		}
-		
-		@-webkit-keyframes roll /*roll旋转名称与上面一致*/
-		{
-			0% {-webkit-transform:rotate(0deg);}
-			100% {-webkit-transform:rotate(360deg);}
-		}
-		.body{
-			background-color: rgba(86, 89, 101, 0.3);
-			width:1300px;
-			min-height:2000px;
-			margin: 80px auto;
-		    position: absolute;
-		    top: 0;
-		    left: 0;
-		    right: 0;
-		    bottom: 0;
-		    /*overflow-y:hidden;*/
-		    text-align: center;
-		}
-/*
-		.body::-webkit-scrollbar {
-		    display: none;
-		}*/
+	    #Logo{
+	    		background-color: rgba(156, 156, 156,0.8);
+				color:white;/* #fff */
+				width:100%;
+				z-index: 100;
+				position: fixed;
+				height:45px;
+				left:0;
+				top:0;
+				/*margin:上下 左右*/
+				margin:0px auto;
+				border-radius:10px;
+				font-family:"apple-system","BlinkMacSystemFont","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+				/*background-color: rgba(84, 89, 93,0.5);*/
+				/*box-shadow:1px 1px 33px #fff;/*设计阴影的*/*/
+			}
 
-		.content_li{
-			width:1100px;
-			height:400px;
-			margin:30px 100px;
-			padding-top:45px;
-			/*background-color: rgba(177, 175, 179, 0.3);*/
-		}
+			
+			#Logo ul{
+				padding: 0;
+				margin:0;
+			}
 
-		.content_li_left{
-			width:450px;
-			height:350px;
-			margin:0px 50px;
-			float:left;
-		}
+			#Logo ul li
+			{
+				width:150px;
+				 height:45px;
+				list-style:none;/*去掉圆点*/
+				float:left;/*水平显示*/
+				color:white;/* #fff */
+				font-size:18px;
+				font-family:"微软雅黑";
+				text-align:center;
+				line-height:45px;/* 行高跟 高度一致时，竖直居中*/
+				border-right:1px solid #000;/*右边框*/
+			}
+			
+			#Logo ul li a
+			{
+				color:white;/* #fff */
+				font-size:18px;
+				font-family:"微软雅黑";
+				text-decoration:none;
+			}
+			
+			#Logo ul li:hover
+			{
+				background:rgba(10,5,5,0.45);
+			}
+			
+			#Logo ul li.first:hover
+			{
+				border-radius:10px 0px 0px 10px;/*左上 左下 圆弧显示 */
+			}
+			
+			#Logo ul li.last:hover
+			{
+				border-radius:0px 10px 10px 0px;/*右上 右下 圆弧显示 */
+			}
+	 
+			#Logo ul li ul li 
+			{
+				border:none;
+				border-top:1px solid #989898;
+				background:rgba(10,5,5,0.45);/*颜色透明度 */
+				border-radius:10px;
+				
+			}
+	 
+			#Logo ul li ul
+			{
+				display:none;/*不显示*/
+			}
+			#Logo ul li ul li:hover
+			{
+				background:rgba(10,5,5,0.8);/*颜色透明度 */
+				border-radius:10px;
+			}
+			
+			#Logo ul li:hover ul
+			{
+				display:block;
+				-webkit-animation:roll 1s ease;/*roll 旋转名称，1s旋转效果 */
+			}
+			
+			@-webkit-keyframes roll /*roll旋转名称与上面一致*/
+			{
+				0% {-webkit-transform:rotate(0deg);}
+				100% {-webkit-transform:rotate(360deg);}
+			}
+			.body{
+				background-color: rgba(86, 89, 101, 0.3);
+				width:1300px;
+				min-height:2000px;
+				margin: 80px auto;
+			    position: absolute;
+			    top: 0;
+			    left: 0;
+			    right: 0;
+			    bottom: 0;
+			    /*overflow-y:hidden;*/
+			    text-align: center;
+			}
+	/*
+			.body::-webkit-scrollbar {
+			    display: none;
+			}*/
 
-		.content_li_right{
-			width:450px;
-			height:350px;
-			margin:0px 50px;
-			/*background-color: red;*/
-			/*font-famile:ncursive|fantasy|monospace|serif|sans-serif;*/
-			/*letter-spacing :3px;*/
-			float:right;
-			align-items: center; /*定义div1的元素垂直居中*/
-			display: flex;/*设置为弹性容器*/
-			font-size: 20px;
-			color:white;
+			.content_li{
+				width:1100px;
+				height:400px;
+				margin:30px 100px;
+				padding-top:45px;
+				/*background-color: rgba(177, 175, 179, 0.3);*/
+			}
 
-		}
+			.content_li_left{
+				width:450px;
+				height:350px;
+				margin:0px 50px;
+				float:left;
+			}
 
-		.content_li_left img{
-			width:450px;
-			height:350px;
-			/*opacity: 0.9;*/
-			/*object-fit:cover;*/
-			text-align: center;
+			.content_li_right{
+				width:450px;
+				height:350px;
+				margin:0px 50px;
+				/*background-color: red;*/
+				/*font-famile:ncursive|fantasy|monospace|serif|sans-serif;*/
+				/*letter-spacing :3px;*/
+				float:right;
+				align-items: center; /*定义div1的元素垂直居中*/
+				display: flex;/*设置为弹性容器*/
+				font-size: 20px;
+				color:white;
 
-		}
-		
-</style>
+			}
+
+			.content_li_left img{
+				width:450px;
+				height:350px;
+				/*opacity: 0.9;*/
+				/*object-fit:cover;*/
+				text-align: center;
+
+			}
+			
+	</style>
+</head>
 <body>
 	<div id="Logo">
 		<ul>
