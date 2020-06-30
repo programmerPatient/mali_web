@@ -18,10 +18,16 @@ if(!$_SESSION['username']){
 	        font-family:"Arial, Helvetica, sans-serif";
 	        background-image:url('../image/died.jpg');
 	        background-repeat:repeat-x;
-	         background-attachment:fixed; 
+	        background-attachment:fixed; 
+    		overflow-x: hidden;
+			overflow-y: scroll;
 	        /*background-repeat: no-repeat;   */
     		/*background-size: 100% 100%;     */
     	}
+    body::-webkit-scrollbar {
+		    display: none;
+		}
+		
     #Logo{
     		background-color: rgba(156, 156, 156,0.8);
 			color:white;/* #fff */
@@ -122,9 +128,13 @@ if(!$_SESSION['username']){
 		    left: 0;
 		    right: 0;
 		    bottom: 0;
-
+		    /*overflow-y:hidden;*/
 		    text-align: center;
 		}
+/*
+		.body::-webkit-scrollbar {
+		    display: none;
+		}*/
 
 		.content_li{
 			width:1100px;

@@ -24,8 +24,10 @@ if(empty($_POST['name'])){
 	$error .= '密码不能为空！';
 }else if($_POST['password'] != $_POST['confim_password']){
 	$error .= '两次密码不一致 ';
+}else if(!preg_match("/^13[0-9]{1}[0-9]{8}$|15[0189]{1}[0-9]{8}$|189[0-9]{8}$/",$_POST['phone'])){
+	$error .='手机号格式错误！';
 }else if($result){
-		$error .= '该账号已经存在 ';
+	$error .= '该账号已经存在 ';
 }else if($captcha != $_POST['code']){
 	$error .= '验证码错误 ';
 }

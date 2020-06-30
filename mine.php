@@ -150,59 +150,80 @@ if(!$_SESSION['username']){
 	    	font-size: 15px;
 	    }
 
+	    .mine{
+	    	text-align: center; /*让div内部文字居中*/
+		    background-color: #fff;
+		    border-radius: 20px;
+		    width: 400px;
+		    height: 550px;
+		    margin: auto;
+		    position: absolute;
+		    top: 0;
+		    left: 0;
+		    right: 0;
+		    bottom: 0;
+		    font-size: 20px;
+		    background-color:rgba(0, 0, 0, 0.4);
+		    color:white;
+	    }
+
+	    .last-left{
+	    	border:none;
+	    	float:left;
+	    }
+	    .last-right{
+	    	border:none;
+	    	float:right;
+	    }
+
+	    .input{
+	    	height: 35px; 
+	    	outline-style: none ;
+	    	border: 1px solid #fff; 
+	    	border-radius: 3px;
+	    	color:black;
+	    }
+
+
+
 </style>
 <body>
 	<div id="Logo">
 		<ul>
-			<li class="last" style="border:none;float:left"> 
+			<li class="last-left" style="border:none;float:left;"> 
 				<a href="../index.php">首页</a>
 			</li>
-			<li class="last" style="border:none;float:left"> 
+			<li class="last-left" style="border:none;float:left;"> 
 				<a href="../KB/died.php">科比去世</a>
 			</li>
-			<li class="last" style="border:none;float:left"> 
+			<li class="last-left" style="border:none;float:left;"> 
 				<a href="../KB/honor.php">科比荣誉</a>
 			</li>
-			<li class="last" style="border:none;float:right"> 
+			<li class="last-right" style="border:none;float:right;"> 
 				<a href="../php/logout.php">退出登录</a>
 			</li>
-			<li class="last" style="border:none;float:right"> 
+			<li class="last-right" style="border:none;float:right;"> 
 				<a href="../php/cancel.php">注销账号</a>
 			</li>
-			<li class="last" style="border:none;float:right"> 
+			<li class="last-right" style="border:none;float:right;"> 
 				<a href="./mine.php">个人信息</a>
 			</li>
 		</ul>
 	</div>
 
-	<div class="mine" style="
-		text-align: center; /*让div内部文字居中*/
-	    background-color: #fff;
-	    border-radius: 20px;
-	    width: 400px;
-	    height: 550px;
-	    margin: auto;
-	    position: absolute;
-	    top: 0;
-	    left: 0;
-	    right: 0;
-	    bottom: 0;
-	    font-size: 20px;
-	    background-color:rgba(0, 0, 0, 0.4);
-	    color:white">
+	<div class="mine">
 		<div class="title">
 			<p style='margin-bottom:0px;margin-top:20px;'>个人信息</p>
 		</div>
 		<form id="form" action="../php/update_user.php" method="POST">
-			<p>用户姓名：<input style="height: 35px; outline-style: none ;border: 1px solid #fff; border-radius: 3px;color:black" type="text" name="name" value="<?php echo $username?>"></p>
-			<p>用户电话：<input style="height: 35px; outline-style: none ;border: 1px solid #fff; border-radius: 3px;color:black" type="text" name="phone" value="<?php echo $userphone?>"></p>
-			<p>用户账号：<input disabled style="height: 35px; outline-style: none ;border: 1px solid #fff; border-radius: 3px;color:white" type="text" name="account" value="<?php echo $useraccount?>"></p>
-			<p>原始密码：<input style="height: 35px; outline-style: none ;border: 1px solid #fff; border-radius: 3px;color:black" type="text" name="old_password"></p>
-			<p>新的密码：<input style="height: 35px; outline-style: none ;border: 1px solid #fff; border-radius: 3px;color:black" type="text" name="password"></p>
-			<p>确认密码：<input style="height: 35px; outline-style: none ;border: 1px solid #fff; border-radius: 3px;color:black" type="text" name="confim_password"></p>
+			<p>用户姓名：<input class="input" type="text" name="name" value="<?php echo $username?>"></p>
+			<p>用户电话：<input class="input" type="text" name="phone" value="<?php echo $userphone?>"></p>
+			<p>用户账号：<input class="input" disabled style="color:white" type="text" name="account" value="<?php echo $useraccount?>"></p>
+			<p>原始密码：<input class="input" type="password" name="old_password"></p>
+			<p>新的密码：<input class="input" type="password" name="password"></p>
+			<p>确认密码：<input class="input" type="password" name="confim_password"></p>
 			<p style="margin:0">验证码：<input style="width:80px;height: 29px; outline-style: none ;border: 1px solid #fff; border-radius: 3px;color:black" type="" name="code"><image id="captcha" style="float:right;width:80px;height:40px;margin-right:50px" src="../php/captcha.php" onclick="update_captcah()"></p>
-			<input class="button"
-			id="save-btn" type="submit" value="提交"/>
+			<input class="button" id="save-btn" type="submit" value="提交"/>
 		</form>
 	</div>
 </body>

@@ -19,9 +19,14 @@ if(!$_SESSION['username']){
 	        background-image:url('../image/honor5.jpg');
 	        background-repeat:repeat-x;
 	         background-attachment:fixed; 
-	        /*background-repeat: no-repeat;   */
-    		/*background-size: 100% 100%;     */
+	        overflow-x: hidden;
+			overflow-y: scroll;
     	}
+
+    body::-webkit-scrollbar {
+		    display: none;
+		}
+
     #Logo{
     		background-color: rgba(156, 156, 156,0.8);
 			color:white;/* #fff */
@@ -231,7 +236,7 @@ if(!$_SESSION['username']){
 	 			<img src="../image/honor4.jpg">
 	 		</div>
 	 		<div class="content_li_right">
-	 			<p>一代传奇球星猝然陨落。据美国媒体消息，当地时间一月26日，NBA名宿科比·布莱恩特在美国加利福尼亚州洛杉矶县卡拉巴萨斯的一场直升机坠机事故中遇难，年仅41岁，他13岁的女儿gigi也在事故中遇难。噩耗传来，举世震惊，这是一个寄托了无数人青春记忆与追梦历程的篮球偶像。科比那标志性的后仰跳投、华丽转身、犀利突破，曾经成为多少年轻人的模仿对象。他的职业生涯充满了拼搏与汗水、坚毅与决绝、质疑与证明、鲜花与掌声，他的名字不仅誉满篮坛，更外溢出一种超越篮球的知名度和影响力，这不仅是由于他职业生涯中光辉璀璨的赫赫战绩，更是因为他不懈拼搏、自律自强、永不服输的坚毅精神。</p>
+	 			<p>一代传奇球星猝然陨落。据美国媒体消息，当地时间1月26日，NBA名宿科比·布莱恩特在美国加利福尼亚州洛杉矶县卡拉巴萨斯的一场直升机坠机事故中遇难，年仅41岁，他13岁的女儿gigi也在事故中遇难。噩耗传来，举世震惊，这是一个寄托了无数人青春记忆与追梦历程的篮球偶像。科比那标志性的后仰跳投、华丽转身、犀利突破，曾经成为多少年轻人的模仿对象。他的职业生涯充满了拼搏与汗水、坚毅与决绝、质疑与证明、鲜花与掌声，他的名字不仅誉满篮坛，更外溢出一种超越篮球的知名度和影响力，这不仅是由于他职业生涯中光辉璀璨的赫赫战绩，更是因为他不懈拼搏、自律自强、永不服输的坚毅精神。</p>
 	 		</div>
 	 	</div>
 	</div>

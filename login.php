@@ -35,11 +35,8 @@ if($_SESSION['username']){
     	font-size: 15px;
     }
 
-
-</style>
-<body>
-	<div class="login" style="
-		text-align: center; /*让div内部文字居中*/
+    .login{
+    	text-align: center; /*让div内部文字居中*/
 	    background-color: #fff;
 	    border-radius: 20px;
 	    width: 300px;
@@ -52,16 +49,45 @@ if($_SESSION['username']){
 	    bottom: 0;
 	    font-size: 25px;
 	    background-color:rgba(200,200,200,0.7);
-	    color:#000000;">
+	    color:#000000;
+    }
+
+    .input{
+    	background-color:transparent;
+    	height: 29px; 
+    	outline-style: none ;
+    	border: 1px solid #fff; 
+    	border-radius: 3px;
+    }
+
+    #captcha{
+    	float:right;
+    	width:60px;
+    	height:40px;
+    	margin-right:10px;
+    }
+
+    #save-btn{
+    	margin-top: 10px;
+    	width:80px;
+    	height: 30px;
+    	float:left;
+    	margin-left: 35px;
+    	margin-right: 45px;
+    }
+
+</style>
+<body>
+	<div class="login">
 		<div class="title" >
 			<p style='margin-bottom:0px'>登录</p>
 		</div>
 		<form action="./php/login.php" method="POST">
-			<p>账号：<input style="background-color:transparent;height: 29px; outline-style: none ;border: 1px solid #fff; border-radius: 3px;" type="" name="account"></p>
-			<p>密码：<input style="background-color:transparent;height: 29px; outline-style: none ;border: 1px solid #fff; border-radius: 3px;" type="" name="password"></p>
+			<p>账号：<input class="input"  type="text" name="account"></p>
+			<p>密码：<input  class="input" type="password" name="password"></p>
 			
-			<p style="margin:0">验证码：<input style="width:80px;background-color:transparent;height: 29px; outline-style: none ;border: 1px solid #fff; border-radius: 3px;" type="" name="code"><image id="captcha" style="float:right;width:60px;height:40px;margin-right:10px" src="./php/captcha.php" onclick="update_captcah()"></p>
-			<input style="margin-top: 10px;width:80px;height: 30px;float:left;margin-left: 35px;margin-right: 45px" id="save-btn" type="submit" value="登录"/>
+			<p style="margin:0">验证码：<input style="width:80px;background-color:transparent;height: 29px; outline-style: none ;border: 1px solid #fff; border-radius: 3px;" type="" name="code"><image id="captcha" src="./php/captcha.php" onclick="update_captcah()"></p>
+			<input id="save-btn" type="submit" value="登录"/>
 		</form>
 		<p style="font-size: 15px">没有账号？<a style="text-decoration: none" href="register.php">注册</a></p>
 	</div>
