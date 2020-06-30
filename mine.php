@@ -200,7 +200,7 @@ if(!$_SESSION['username']){
 			<p>原始密码：<input style="height: 35px; outline-style: none ;border: 1px solid #fff; border-radius: 3px;color:black" type="text" name="old_password"></p>
 			<p>新的密码：<input style="height: 35px; outline-style: none ;border: 1px solid #fff; border-radius: 3px;color:black" type="text" name="password"></p>
 			<p>确认密码：<input style="height: 35px; outline-style: none ;border: 1px solid #fff; border-radius: 3px;color:black" type="text" name="confim_password"></p>
-			<p style="margin:0">验证码：<input style="width:80px;height: 29px; outline-style: none ;border: 1px solid #fff; border-radius: 3px;color:black" type="" name="code"><image id="captcha" style="float:right;width:80px;height:40px;margin-right:50px" src="./captcha.php" onclick="update_captcah()"></p>
+			<p style="margin:0">验证码：<input style="width:80px;height: 29px; outline-style: none ;border: 1px solid #fff; border-radius: 3px;color:black" type="" name="code"><image id="captcha" style="float:right;width:80px;height:40px;margin-right:50px" src="../php/captcha.php" onclick="update_captcah()"></p>
 			<input class="button"
 			id="save-btn" type="submit" value="提交"/>
 		</form>
@@ -225,6 +225,6 @@ if(!$_SESSION['username']){
 
 
 	function update_captcah(){
-		document.getElementById('captcha').src="./captcha.php";
+		document.getElementById('captcha').src="../php/captcha.php";
 	}
 </script>	

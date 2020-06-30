@@ -33,9 +33,10 @@ if(!$_SESSION['username']){
 	        font-size:12px;
 	        font-family:"Arial, Helvetica, sans-serif";
 	        background:url('./image/index.jpg'),url("./image/honor5.jpg"),url("./image/login.jpg"),("./image/mine.jpg");
-	        background-repeat:repeat-x;
-	         animation-name:myfirst;
-		    animation-duration:60s;
+	        /*background-size: 100%;*/
+	        /*background-repeat:repeat-x;*/
+	        animation-name:myfirst;
+		    animation-duration:30s;
 		    /*变换时间*/
 		    animation-delay:0s;
 		    /*动画开始时间*/
@@ -43,16 +44,13 @@ if(!$_SESSION['username']){
 		    /*下一周期循环播放*/
 		    animation-play-state:running;
 		    /*动画开始运行*/
+		    animation-timing-function:linear;
 		}
 
 		@keyframes myfirst
 		{
-		    0%   {
-		    	background:url("./image/index.jpg");
-		    }
-		    25%  {background:url("./image/honor5.jpg");}
-		    50%  {background:url("./image/login.jpg");}
-		    75%  {background:url("./image/mine.jpg");}
+		    0%   {background:url("./image/index.jpg");}
+		    50%  {background:url("./image/honor5.jpg");}
 		    100% {background:url("./image/index.jpg");}
 
 		}
