@@ -6,106 +6,104 @@ if($_SESSION['username']){
 }
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<meta charset="utf-8">
-	<title>注册页面</title>
+    <meta charset="UTF-8">
+ 
+    <title>个人信息页</title>
+    <link rel="stylesheet" href="./public/layui/css/layui.css">
+    <link rel="stylesheet" href="./public/css/style.css">
     <style type="text/css">
-
         body{
-
-            font-size:12px;
-            font-family:"Arial, Helvetica, sans-serif";
-            background-image:url('./image/register.jpg');
-            background-repeat:repeat-x;
+            background-image: url('./public/image/register.jpg')
         }
-        a{
-            color: #3fc594;
+        .login-main{
+            margin-top:200px;
+            width:400px;
+            height:460px;
+            padding:50px;
+            background-color: #eaeaea;
         }
-        a:hover{
-            color: blue;
-        }
-
-        .error{
-            color:red;
-            margin:0;
-            padding:0;
-            font-size: 15px;
-        }
-
-        .login{
-            text-align: center; /*让div内部文字居中*/
-            background-color: #fff;
-            border-radius: 20px;
-            width: 300px;
-            height: 450px;
-            margin: auto;
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            font-size: 20px;
-            background-color:rgba(145, 160, 171, 0.3);
-            color:#f3eded;
-        }
-
-        .input{
-            background-color:transparent;
-            height: 29px; 
-            outline-style: none ;
-            border: 1px solid #fff; 
-            border-radius: 3px;
+        .login-main header{
+            margin-top:0px;
         }
 
         #captcha{
-            float:right;
-            width:60px;
-            height:40px;
-            margin-right:10px;
+            width:45%;
+            margin-left:5%;
+            height:35px;
         }
 
-        .button{
-            margin-top: 10px;
-            width:80px;
-            height: 30px;
-            float:left;
-            margin-left: 35px;
-            margin-right: 45px;
+        .error,.success{
+            width:100%;
+            text-align: center;
+            padding-bottom:10px;
         }
-
+        .error{
+            color:red;
+        }
+        .success{
+            color:green;
+        }
+        .login-main form .layui-input-inline input{
+            width:60%;
+        }
     </style>
 </head>
 <body>
-	<div class="login">
-		<div class="title" >
-			<p style='margin-bottom:0px'>注册</p>
-		</div>
-		<form id="form" action="./php/register.php" method="POST">
-			<p>输入姓名：<input class="input" type="text" name="name"></p>
-			<p>输入电话：<input class="input" type="text" name="phone"></p>
-			<p>输入账号：<input class="input" type="text" name="account"></p>
-			<p>输入密码：<input class="input" type="password" name="password"></p>
-			<p>确认密码：<input class="input" type="password" name="confim_password"></p>
-			<p style="margin:0">验证码：<input style="width:80px;background-color:transparent;height: 29px; outline-style: none ;border: 1px solid #fff; border-radius: 3px;" type="" name="code"><image id="captcha" src="./php/captcha.php" onclick="update_captcah()"></p>
-			<input class="button" id="save-btn" type="submit" value="提交"/>
-		</form>
-		
-		<p style="font-size: 15px">有账号？<a style="text-decoration: none" href="login.php">登录</a></p>
-	</div>
+<div class="login-main">
+    <header class="layui-elip">注册</header>
+    <form class="layui-form" action="./php/register.php" method="POST">
+        <div class="layui-input-inline">
+            <label class="layui-form-label ">账号：</label>
+            <input type="text" name="account" required lay-verify="required" placeholder="账号" autocomplete="off"
+                   class="layui-input" style="float:left">
+        </div>
+        <div class="layui-input-inline">
+            <label class="layui-form-label ">姓名：</label>
+            <input type="text" name="name" required lay-verify="required" placeholder="用户名" autocomplete="off"
+                   class="layui-input">
+        </div>
+        <div class="layui-input-inline">
+            <label class="layui-form-label ">手机：</label>
+            <input type="text" name="phone" required lay-verify="required" placeholder="手机" autocomplete="off"
+                   class="layui-input">
+        </div>
+        <div class="layui-input-inline">
+            <label class="layui-form-label ">密码：</label>
+            <input type="password" name="password" lay-verify="required" required placeholder="密码" autocomplete="off"
+                   class="layui-input">
+        </div>
+        <div class="layui-input-inline">
+            <label class="layui-form-label ">密码确认：</label>
+            <input type="password" name="confim_password" lay-verify="required" required placeholder="确认密码" autocomplete="off"
+                   class="layui-input">
+        </div>
+        <div class="layui-input-inline captcha">
+            <image id="captcha" src="./php/captcha.php" onclick="update_captcah()">
+            <input type="text" name="code" required lay-verify="required" placeholder="验证码" autocomplete="off"
+                   class="layui-input captcha" style="width:50%;float:left">
+        </div>
+        <div class="layui-input-inline login-btn">
+            <button lay-submit lay-filter="login" class="layui-btn">提交</button>
+        </div>
+        <hr/>
+        <p style="text-align: center;">已有账号？<a href="login.php">登录</a></p>
+    </form>
+</div>
+ 
+ 
+<script src="./public/layui/layui.js"></script>
+<script type="text/javascript" src="./public/js/jquery.js"></script>
+<script type="text/javascript">
+    function update_captcah(){
+        document.getElementById('captcha').src="./php/captcha.php?";
+    }
+    var error = "<?php echo $_GET['error']?$_GET['error']:null; ?>";
+    if(error){
+        $('.layui-elip').after('<div class="error">'+error+'</div>');
+        // alert(error);
+    }
+</script>
 </body>
 </html>
-<script type="text/javascript" src="./js/jquery.js"></script>
-<script type="text/javascript">
-
-	var error = "<?php echo $_GET['error']?$_GET['error']:null; ?>";
-	if(error){
-		$('.title').append('<p class="error">错误信息：'+error+'</p>');
-		// alert(error);
-	}
-
-
-	function update_captcah(){
-		document.getElementById('captcha').src="./php/captcha.php";
-	}
-</script>	

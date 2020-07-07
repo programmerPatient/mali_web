@@ -1,5 +1,11 @@
 <?php
+require './databases/mysql.php';
+require './config/mysql_config.php';
 session_start();
+/**
+ * 建立mysql链接
+ */
+$mysql = Mysql::getInstance(DB_HOST,DB_USER,DB_PWD,DB_DBNAME,'',DB_CHARSET);
 if(!$_SESSION['username']){
 	header('location:./login.php');
 }else{
@@ -11,241 +17,117 @@ if(!$_SESSION['username']){
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="utf-8">
-	<title>首页</title>
-	<style type="text/css">
-		li{
-			list-style-type:none;
-		}
+    <meta charset="UTF-8">
+ 
+    <title>个人信息页</title>
+    <link rel="stylesheet" href="./public/layui/css/layui.css">
+    <link rel="stylesheet" href="./public/css/style.css">
+    <link rel="stylesheet" type="text/css" href="./public/css/index.css">
+ 	<style type="text/css">
+ 		body{
+ 			background-image: url('./public/image/login.jpg')
+ 		}
+ 		.login-main{
+ 			margin-top:200px;
+ 			width:400px;
+ 			height:500px;
+ 			padding:50px;
+ 			background-color: #eaeaea;
+ 		}
+ 		.login-main header{
+ 			margin-top:0px;
+ 		}
 
-		.top{
-			height:20px;
-			background-color: rgba(12,255,35,0.5);
-			margin:0; 	
-		}
+ 		#captcha{
+ 			width:45%;
+ 			margin-left:5%;
+ 			height:35px;
+ 		}
 
-		*{ margin:0;padding:0; }
-	 
-			body{			
-		        font-size:12px;
-		        font-family:"Arial, Helvetica, sans-serif";
-		        background-image:url('../image/login.jpg');
-		        background-repeat:repeat-x;
-			}
-			
-			#Logo{
-				background-color: rgba(156, 156, 156,0.8);
-				color:white;/* #fff */
-				width:100%;
-				z-index: 100;
-				position: fixed;
-				height:45px;
-				/*margin:上下 左右*/
-				margin:0px auto;
-				border-radius:10px;
-				font-family:"apple-system","BlinkMacSystemFont","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
-				/*background-color: rgba(84, 89, 93,0.5);*/
-				/*box-shadow:1px 1px 33px #fff;/*设计阴影的*/*/
-			}
-			#Logo ul li
-			{
-				width:150px;
-				 height:45px;
-				list-style:none;/*去掉圆点*/
-				float:left;/*水平显示*/
-				color:black;/* #fff */
-				font-size:18px;
-				font-family:"微软雅黑";
-				text-align:center;
-				line-height:45px;/* 行高跟 高度一致时，竖直居中*/
-				border-right:1px solid #000;/*右边框*/
-			}
-			
-			#Logo ul li a
-			{
-				color:white;/* #fff */
-				font-size:18px;
-				font-family:"微软雅黑";
-				text-decoration:none;
-			}
-			
-			#Logo ul li:hover
-			{
-				background:rgba(10,5,5,0.45);
-			}
-			
-			#Logo ul li.first:hover
-			{
-				border-radius:10px 0px 0px 10px;/*左上 左下 圆弧显示 */
-			}
-			
-			#Logo ul li.last:hover
-			{
-				border-radius:0px 10px 10px 0px;/*右上 右下 圆弧显示 */
-			}
-	 
-			#Logo ul li ul li 
-			{
-				border:none;
-				border-top:1px solid #989898;
-				background:rgba(10,5,5,0.45);/*颜色透明度 */
-				border-radius:10px;
-				
-			}
-	 
-			#Logo ul li ul
-			{
-				display:none;/*不显示*/
-			}
-			#Logo ul li ul li:hover
-			{
-				background:rgba(10,5,5,0.8);/*颜色透明度 */
-				border-radius:10px;
-			}
-			
-			#Logo ul li:hover ul
-			{
-				display:block;
-				-webkit-animation:roll 1s ease;/*roll 旋转名称，1s旋转效果 */
-			}
-			
-			@-webkit-keyframes roll /*roll旋转名称与上面一致*/
-			{
-				0% {-webkit-transform:rotate(0deg);}
-				100% {-webkit-transform:rotate(360deg);}
-			}
-			.mine #form p{
-				margin:15px 0;
-				color:white;
-			}
-
-			.button{
-				margin-top: 10px;width:200px;height: 60px;float:left;margin:10px 100px;  /* Green */
-			    
-			    background-color: gray; 
-			    border: none;
-			    color: black; 
-			    padding: 16px 32px;
-			    text-align: center;
-			    text-decoration: none;
-			    display: inline-block;
-			    font-size: 16px;
-			    -webkit-transition-duration: 0.4s; /* Safari */
-			    transition-duration: 0.4s;
-			    cursor: pointer;
-			    border: 2px solid #4CAF50;
-			}
-			.button:hover{
-				background-color: #4CAF50; /* Green */
-			    color: white;
-			}
-
-			.error{
-		    	color:red;
-		    	font-size: 15px;
-		    }
-		    .success{
-		    	color:green;
-		    	font-size: 15px;
-		    }
-
-		    .mine{
-		    	text-align: center; /*让div内部文字居中*/
-			    background-color: #fff;
-			    border-radius: 20px;
-			    width: 400px;
-			    height: 550px;
-			    margin: auto;
-			    position: absolute;
-			    top: 0;
-			    left: 0;
-			    right: 0;
-			    bottom: 0;
-			    font-size: 20px;
-			    background-color:rgba(0, 0, 0, 0.4);
-			    color:white;
-		    }
-
-		    .last-left{
-		    	border:none;
-		    	float:left;
-		    }
-		    .last-right{
-		    	border:none;
-		    	float:right;
-		    }
-
-		    .input{
-		    	height: 35px; 
-		    	outline-style: none ;
-		    	border: 1px solid #fff; 
-		    	border-radius: 3px;
-		    	color:black;
-		    }
-
-
-
-	</style>
+ 		.error,.success{
+            width:100%;
+            text-align: center;
+            padding-bottom:10px;
+        }
+ 		.error{
+ 			color:red;
+ 		}
+        .success{
+            color:green;
+        }
+ 		.login-main form .layui-input-inline input{
+ 			width:60%;
+ 		}
+ 	</style>
 </head>
 <body>
-	<div id="Logo">
-		<ul>
-			<li class="last-left" style="border:none;float:left;"> 
-				<a href="../index.php">首页</a>
-			</li>
-			<li class="last-left" style="border:none;float:left;"> 
-				<a href="../KB/died.php">科比去世</a>
-			</li>
-			<li class="last-left" style="border:none;float:left;"> 
-				<a href="../KB/honor.php">科比荣誉</a>
-			</li>
-			<li class="last-right" style="border:none;float:right;"> 
-				<a href="../php/logout.php">退出登录</a>
-			</li>
-			<li class="last-right" style="border:none;float:right;"> 
-				<a href="../php/cancel.php">注销账号</a>
-			</li>
-			<li class="last-right" style="border:none;float:right;"> 
-				<a href="./mine.php">个人信息</a>
-			</li>
-		</ul>
-	</div>
 
-	<div class="mine">
-		<div class="title">
-			<p style='margin-bottom:0px;margin-top:20px;'>个人信息</p>
-		</div>
-		<form id="form" action="../php/update_user.php" method="POST">
-			<p>用户姓名：<input class="input" type="text" name="name" value="<?php echo $username?>"></p>
-			<p>用户电话：<input class="input" type="text" name="phone" value="<?php echo $userphone?>"></p>
-			<p>用户账号：<input class="input" disabled style="color:white" type="text" name="account" value="<?php echo $useraccount?>"></p>
-			<p>原始密码：<input class="input" type="password" name="old_password"></p>
-			<p>新的密码：<input class="input" type="password" name="password"></p>
-			<p>确认密码：<input class="input" type="password" name="confim_password"></p>
-			<p style="margin:0">验证码：<input style="width:80px;height: 29px; outline-style: none ;border: 1px solid #fff; border-radius: 3px;color:black" type="" name="code"><image id="captcha" style="float:right;width:80px;height:40px;margin-right:50px" src="../php/captcha.php" onclick="update_captcah()"></p>
-			<input class="button" id="save-btn" type="submit" value="提交"/>
-		</form>
-	</div>
-</body>
-</html>
-<script type="text/javascript" src="../js/jquery.js"></script>
+<?php require './top.php'; ?>
+
+<div class="login-main">
+    <header class="layui-elip">个人信息</header>
+    <form class="layui-form" action="./php/update_user.php" method="POST">
+        <div class="layui-input-inline">
+        	<label class="layui-form-label ">账号：</label>
+            <input type="text" name="account" disabled lay-verify="required" placeholder="账号" autocomplete="off"
+                   class="layui-input" style="float:left" value="<?php echo $useraccount; ?>">
+        </div>
+        <div class="layui-input-inline">
+        	<label class="layui-form-label ">姓名：</label>
+            <input type="text" name="name" required lay-verify="required" placeholder="用户名" autocomplete="off"
+                   class="layui-input" value="<?php echo $username; ?>">
+        </div>
+        <div class="layui-input-inline">
+        	<label class="layui-form-label ">手机：</label>
+            <input type="text" name="phone" required lay-verify="required" placeholder="手机" autocomplete="off"
+                   class="layui-input" value="<?php echo $userphone; ?>">
+        </div>
+        <div class="layui-input-inline">
+        	<label class="layui-form-label ">原始密码：</label>
+            <input type="password" name="old_password" lay-verify="required" placeholder="原始密码" autocomplete="off"
+                   class="layui-input">
+        </div>
+        <div class="layui-input-inline">
+        	<label class="layui-form-label ">新的密码：</label>
+            <input type="password" name="password" lay-verify="required" placeholder="新密码" autocomplete="off"
+                   class="layui-input">
+        </div>
+        <div class="layui-input-inline">
+        	<label class="layui-form-label ">密码确认：</label>
+            <input type="password" name="confim_password" lay-verify="required" placeholder="确认密码" autocomplete="off"
+                   class="layui-input">
+        </div>
+        <div class="layui-input-inline captcha">
+        	<image id="captcha" src="./php/captcha.php" onclick="update_captcah()">
+            <input type="text" name="code" required lay-verify="required" placeholder="验证码" autocomplete="off"
+                   class="layui-input captcha" style="width:50%;float:left">
+        </div>
+        <div class="layui-input-inline login-btn">
+            <button lay-submit lay-filter="login" class="layui-btn">提交</button>
+        </div>
+        <hr/>
+    </form>
+</div>
+ 
+ 
+<script src="./public/layui/layui.js"></script>
+<script type="text/javascript" src="./public/js/jquery.js"></script>
 <script type="text/javascript">
-
+	function update_captcah(){
+		document.getElementById('captcha').src="./php/captcha.php?";
+	}
 	var error = "<?php echo $_GET['error']?$_GET['error']:null; ?>";
 	if(error){
-		$('.title').append('<p class="error">错误信息：'+error+'</p>');
+		$('.layui-elip').after('<div class="error">'+error+'</div>');
 		// alert(error);
 	}
 
 	var success = "<?php echo $_GET['success']?$_GET['success']:null; ?>";
 	if(success){
-		$('.title').append('<p class="success">'+success+'</p>');
+		$('.layui-elip').after('<div class="success">'+success+'</div>');
 		// alert(error);
 	}
+</script>
+</body>
+</html>
 
-
-
-	function update_captcah(){
-		document.getElementById('captcha').src="../php/captcha.php";
-	}
-</script>	

@@ -9,7 +9,7 @@ require '../config/mysql_config.php';
 session_start();
 
 $mysql = Mysql::getInstance(DB_HOST,DB_USER,DB_PWD,DB_DBNAME,'',DB_CHARSET);
-$result = $mysql->update(['is_cancel'=>'1'],'user',' id='.$_SESSION['userid']);
+$result = $mysql->update(['is_cancel'=>'1'],'user',' account='.'\''.$_SESSION['useraccount'].'\'');
 
 if($result){
 	session_destroy();

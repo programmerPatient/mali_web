@@ -22,7 +22,7 @@ if(!$_POST['account']){
 	$error .='账号不能为空！';
 }else if(!$_POST['password']){
 	$error .='密码不能为空！';
-}else if($captcha != $_POST['code']){
+}else if($captcha != strtolower($_POST['code'])){
 	$error .= '验证码错误!';
 }else{
 	$account = $_POST['account'];

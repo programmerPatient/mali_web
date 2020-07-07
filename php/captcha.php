@@ -19,7 +19,7 @@ imagefill($image,0,0,$bgcolor);
 
 /*设置验证码的内容*/
 //定义验证码内容
-$content = "ABCDEFGHIGKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+$content = "ABCDEFGHIGKLMNPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz123456789";
 
 //创建一个变量存储生产的验证码数据，便于用户提交核对
 $captcha = '';
@@ -38,7 +38,7 @@ for($i = 0; $i < 4; $i++){
 	imagestring($image,$fontsize,$x,$y,$fontcontent,$fontcolor);
 }
 
-$_SESSION["captcha"] = $captcha;
+$_SESSION["captcha"] = strtolower($captcha);
 
 /*设置背景干扰元素*/
 for($i = 0; $i < 200; $i++){
