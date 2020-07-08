@@ -25,10 +25,8 @@ if ((($_FILES["file"]["type"] == "image/gif")
         // 如果没有 upload 目录，你需要创建它，upload 目录权限为 777
         if (file_exists($_SERVER['DOCUMENT_ROOT']."/upload/" . $_FILES["file"]["name"]))
         {
-            echo json_encode(['code'=>1,'msg'=> $_FILES["file"]["name"] . " 文件已经存在。 "]);
-        }
-        else
-        {
+            echo json_encode(['code'=>-1,'src'=>"/upload/" . $_FILES["file"]["name"]]);
+        }else{
             // 如果 upload 目录不存在该文件则将文件上传到 upload 目录下
             move_uploaded_file($_FILES["file"]["tmp_name"], "../../upload/" . $_FILES["file"]["name"]);
             echo json_encode(['src'=>"/upload/" . $_FILES["file"]["name"],'code'=> -1]);

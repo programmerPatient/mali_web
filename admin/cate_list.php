@@ -23,7 +23,7 @@ if(!$result){
 <!DOCTYPE html>
 <html>
 <head>
-    <title>首页</title>
+    <title>分类列表页</title>
     <link rel="stylesheet" type="text/css" href="../public/layui/css/layui.css">
     <link rel="stylesheet" type="text/css" href="../public/css/admin.css" />
     <script type="text/javascript" src="../public/layui/layui.js"></script>
@@ -102,13 +102,20 @@ if(!$result){
 
 
     function del(id){
-        $.post('./php/cate_delete.php',{cate_id:id},function(res){
-            if(res.code>0){
-                layer.alert(res.msg,{icon:2});
-            }else{
-                layer.msg(res.msg);
-                setTimeout(function(){parent.window.location.reload();},1000);
-            }
-        },'json');
+        layer.confirm('删除分类也会删除相应的文章，您确定要删除吗？', {
+        btn: ['Yes','No'] //按钮
+        }, function(){
+            $.post('./php/cate_delete.php',{cate_id:id},function(res){
+                if(res.code>0){
+                    layer.alert(res.msg,{icon:2});
+                }else{
+                    layer.msg(res.msg);
+                    setTimeout(function(){parent.window.location.reload();},1000);
+                }
+            },'json');
+        }, function(){
+            // 事务回调
+        });
+        
     }
 </script>

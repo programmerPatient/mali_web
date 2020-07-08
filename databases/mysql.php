@@ -24,6 +24,10 @@ class Mysql{
 		$this->connect();
 	}
 
+	public function get_conn(){
+		return $this->conn;
+	}
+
 	private function __clone(){}
 
 	public static function getInstance($db_host,$db_user,$db_pwd,$db_database,$conn,$coding){

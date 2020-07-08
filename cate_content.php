@@ -7,7 +7,7 @@ session_start();
  */
 $mysql = Mysql::getInstance(DB_HOST,DB_USER,DB_PWD,DB_DBNAME,'',DB_CHARSET);
 if(!$_SESSION['username']){
-	header('location:./login.php');
+	header('location:../login.php?error=请登录！');
 }else{
 	$cate = $mysql->fetch_all("SELECT * FROM cate WHERE status = 1");
 	$username = $_SESSION['username'];
@@ -15,13 +15,6 @@ if(!$_SESSION['username']){
 	$now_cate = $mysql->fetch_all("SELECT * FROM cate WHERE id=".$cate_id);
 	$cate_content['cate_name'] = $now_cate['name'];
 	$cate_content['article_list'] = $mysql->fetch_all("SELECT * FROM article WHERE  status=1 AND cate_id=".$cate_id." ORDER BY sort asc");
-}
-?>
-
-<?php
-session_start();
-if(!$_SESSION['username']){
-	header('location:../login.php?error=请登录！');
 }
 ?>
 
@@ -134,7 +127,7 @@ if(!$_SESSION['username']){
 		<?php for($i=0;$i<count($cate_content['article_list']);$i++){ ?>
 	 	<div class="content_li">
 	 		<a href="./article.php?article_id=<?php echo $cate_content['article_list'][$i]['id']; ?>">
-		 		<div class="<?php if($i%2==0){?>content_li_left<?}else{?>content_li_right<?}?>">
+		 		<div class="<?php if($i%2==0){ ?>content_li_left<?php }else{?>content_li_right<?php } ?>">
 		 			<img src="<?php echo $cate_content['article_list'][$i]['img_src']; ?>">
 		 		</div>
 		 		<div class="content_li_right">

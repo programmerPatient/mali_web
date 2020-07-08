@@ -15,7 +15,7 @@ if(!$_SESSION['adminname']){
 <!DOCTYPE html>
 <html>
 <head>
-    <title>分类添加页面</title>
+    <title>分类修改页面</title>
     <link rel="stylesheet" type="text/css" href="../public/layui/css/layui.css">
     <link rel="stylesheet" type="text/css" href="../public/css/admin.css" />
     <script type="text/javascript" src="../public/layui/layui.js"></script>
