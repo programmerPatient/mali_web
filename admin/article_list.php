@@ -23,7 +23,7 @@ if(!$result){
         $p = $_GET['p'];
     }
     $count = ($p >= ($page-1)) ? count($all_article)-($page-1)*18 : 18;
-    $article = $mysql->fetch_all("SELECT * FROM article ORDER BY id asc limit ".$p.",".$count);
+    $article = $mysql->fetch_all("SELECT * FROM article ORDER BY sort asc limit ".$p.",".$count);
     foreach ($article as  &$vals) {
         $vals['cate_name'] = $mysql->fetch_one("SELECT * FROM cate WHERE id = ".$vals['cate_id'])['name'];
     }

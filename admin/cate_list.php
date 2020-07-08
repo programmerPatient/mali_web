@@ -14,10 +14,16 @@ if(!$result){
     if(!$_SESSION['adminname']){
         header('location:./login.php');
     }else{
-        $cate = $mysql->fetch_all("SELECT * FROM cate ORDER BY sort asc");
+        $all_cate = $mysql->fetch_all("SELECT * FROM cate ORDER BY sort asc");
+        $page = ceil(count($all_cate)/18);
+        if(empty($_GET['p'])){
+            $p = 0;
+        }else{
+            $p = $_GET['p'];
+        }
+        $count = ($p >= ($page-1)) ? count($all_cate)-($page-1)*18 : 18;
+        $cate = $mysql->fetch_all("SELECT * FROM cate ORDER BY sort asc limit ".$p.",".$count);
     }
-    
-
 }
 ?>
 <!DOCTYPE html>
@@ -68,9 +74,29 @@ if(!$result){
                 <?php }?>
             </tbody>
         </table>
-		<div>
-			<!-- {$right|raw} -->
-		</div>
+		<?php if($p > 0) { ?>
+        <div class="layui-box layui-laypage layui-laypage-default">
+            <a style="background-color:#009688; color:white;" href="./cate_list.php?p=<?php echo $p-1; ?>">
+                <
+            </a>
+        </div>
+        <?php } ?>
+        <?php if(!empty($page)) { ?>
+        <?php for($i = 0; $i < $page; $i++) { ?>
+         <div class="layui-box layui-laypage layui-laypage-default">
+            <a href="./cate_list.php?p=<?php echo $i; ?>" <?php if($i == $p) { ?> style="background-color:#d2d2d2;" <?php } ?>>
+                <?php echo $i+1; ?>
+            </a> 
+        </div>
+        <?php } ?>
+        <?php } ?>
+        <?php if($p < $page -1) { ?>
+        <div class="layui-box layui-laypage layui-laypage-default">
+            <a style="background-color:#009688; color:white;" href="./cate_list.php?p=<?php echo $p+1; ?>">
+                >
+            </a>
+        </div>
+        <?php } ?>
     </div>
 </body>
 </html>
